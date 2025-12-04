@@ -22,6 +22,19 @@ jobs:
     
     - name: Display Xcode Version
       run: xcodebuild -version
+
+    - name: Setup iOS Simulator
+      run: |
+        # List available runtimes to find iOS 18.1
+        xcrun simctl list runtimes
+        
+        # Create iPhone 16 Pro simulator
+        SIMULATOR_ID=$(xcrun simctl create "iPhone 16 Pro" com.apple.CoreSimulator.SimDeviceType.iPhone-16-Pro com.apple.CoreSimulator.SimRuntime.iOS-26-1)
+        echo "SIMULATOR_ID=$SIMULATOR_ID" >> $GITHUB_ENV
+        
+        # Boot the simulator
+        xcrun simctl boot $SIMULATOR_ID
+      continue-on-error: true
     
     - name: Display Swift Version
       run: swift --version
@@ -42,7 +55,7 @@ jobs:
         xcodebuild clean build \
           -project PriceGuesser.xcodeproj \
           -scheme PriceGuesser \
-          -destination 'generic/platform=iOS Simulator' \
+          -destination "id=$SIMULATOR_ID" \
           -derivedDataPath ./DerivedData \
           CODE_SIGN_IDENTITY="" \
           CODE_SIGNING_REQUIRED=NO \
@@ -53,7 +66,7 @@ jobs:
         xcodebuild test \
           -project PriceGuesser.xcodeproj \
           -scheme PriceGuesser \
-          -destination 'generic/platform=iOS Simulator' \
+          -destination "id=$SIMULATOR_ID" \
           -derivedDataPath ./DerivedData \
           -enableCodeCoverage YES \
           -resultBundlePath ./TestResults.xcresult \
