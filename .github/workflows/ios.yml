@@ -42,7 +42,7 @@ jobs:
         xcodebuild clean build \
           -project PriceGuesser.xcodeproj \
           -scheme PriceGuesser \
-          -destination 'platform=iOS Simulator,name=iPhone 16 Pro' \
+          -destination 'generic/platform=iOS Simulator' \
           -derivedDataPath ./DerivedData \
           CODE_SIGN_IDENTITY="" \
           CODE_SIGNING_REQUIRED=NO \
@@ -53,7 +53,7 @@ jobs:
         xcodebuild test \
           -project PriceGuesser.xcodeproj \
           -scheme PriceGuesser \
-          -destination 'platform=iOS Simulator,name=iPhone 16 Pro' \
+          -destination 'generic/platform=iOS Simulator' \
           -derivedDataPath ./DerivedData \
           -enableCodeCoverage YES \
           -resultBundlePath ./TestResults.xcresult \
