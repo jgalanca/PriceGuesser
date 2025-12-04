@@ -1,0 +1,12 @@
+// Signing Configuration Template
+// Copy this file to Signing.xcconfig and fill in your actual values
+// Signing.xcconfig is ignored by git to prevent committing sensitive data
+
+// App Information
+PRODUCT_NAME = PriceGuesser
+PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.yourapp
+
+// Code Signing
+DEVELOPMENT_TEAM = YOUR_TEAM_ID
+CODE_SIGN_IDENTITY = Apple Development
+PROVISIONING_PROFILE_SPECIFIER = Your Provisioning Profile Name

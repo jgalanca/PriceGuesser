@@ -1,0 +1,15 @@
+// Debug Configuration
+#include "Common.xcconfig"
+
+// Code Signing - Debug
+CODE_SIGN_STYLE = Manual
+
+// Build Settings
+SWIFT_OPTIMIZATION_LEVEL = -Onone
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG
+GCC_OPTIMIZATION_LEVEL = 0
+ENABLE_TESTABILITY = YES
+DEBUG_INFORMATION_FORMAT = dwarf
+
+// Other Settings
+ONLY_ACTIVE_ARCH = YES
